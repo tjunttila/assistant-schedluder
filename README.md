@@ -10,7 +10,7 @@ As finding an optimal scheduling under such constraints can be hard to do by han
 
 # Requirements
 
-* [Python](https://www.python.org/) programming language, version 3.6 or higher
+* [Python](https://www.python.org/) programming language, version 3.6 or higher.
 * [Clingo](https://github.com/potassco/clingo) answer set solver tool.
 
 # Usage

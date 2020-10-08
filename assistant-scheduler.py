@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-A small script for scheduling assistant to tutorial groups.
+A small script for scheduling assistants in exercise groups.
 Author: Tommi Junttila
 License: The MIT License
 """
@@ -113,6 +113,7 @@ The supported file formats and extensions are:
     conf = Config()
     penalties = ['penalty_bad_time', 'penalty_ok_time', 'penalty_good_time', 'penalty_consecutive']
     other_keys = ['groups', 'assistants']
+    gnameToIndex = {}
     if inputFormat == 'JSON':
         inp = json.load(open(args.input_file, 'r', encoding = 'utf-8'))
         for attr in penalties:
@@ -120,7 +121,6 @@ The supported file formats and extensions are:
         for k in inp:
             if k not in penalties and k not in other_keys:
                 p.error(f'Invalid key "{k}" in the configuration file')
-        gnameToIndex = {}
         for (index, g) in enumerate(inp['groups']):
             name = g['name']
             if name in gnameToIndex:
@@ -128,15 +128,8 @@ The supported file formats and extensions are:
             o = Group(name, index)
             conf.groups.append(o)
             gnameToIndex[name] = index
-            for attr in ['min','max']:
+            for attr in ['min','max','pred']:
                 if attr in g: o.__setattr__(attr, g[attr])
-        for g in inp['groups']:
-            name = g['name']
-            if 'pred' in g:
-                pred = g['pred']
-                if pred not in gnameToIndex:
-                    p.error(f'The predecessor group "{pred}" is not defined')
-                conf.groups[gnameToIndex[name]].pred = conf.groups[gnameToIndex[pred]]
         anameToIndex = {}
         for (index,aname) in enumerate(inp['assistants']):
             if aname in anameToIndex:
@@ -156,7 +149,6 @@ The supported file formats and extensions are:
         for k in inp:
             if k not in penalties and k not in other_keys:
                 p.error(f'Invalid key "{k}" in the configuration file')
-        gnameToIndex = {}
         for (index, g) in enumerate(inp['groups']):
             assert len(g) == 1
             (name,g) = list(g.items())[0]
@@ -165,15 +157,8 @@ The supported file formats and extensions are:
             o = Group(name, index)
             conf.groups.append(o)
             gnameToIndex[name] = index
-            for attr in ['min','max']:
+            for attr in ['min','max','pred']:
                 if attr in g: o.__setattr__(attr, g[attr])
-        for g in inp['groups']:
-            (name,g) = list(g.items())[0]
-            if 'pred' in g:
-                pred = g['pred']
-                if pred not in gnameToIndex:
-                    p.error(f'The predecessor group "{pred}" is not defined')
-                conf.groups[gnameToIndex[name]].pred = conf.groups[gnameToIndex[pred]]
         anameToIndex = {}
         for (index,a) in enumerate(inp['assistants']):
             assert len(a) == 1
@@ -188,7 +173,14 @@ The supported file formats and extensions are:
             for attr in ['min','max']:
                 if attr in a: o.__setattr__(attr, a[attr])
     else:
-        p.error("Should not happen")
+        p.error('Should not happen')
+
+    # Link the predecessor groups
+    for g in conf.groups:
+        if g.pred != None:
+            if g.pred not in gnameToIndex:
+                p.error(f'The predecessor group "{g.pred}" is not defined')
+            g.pred = conf.groups[gnameToIndex[g.pred]]
 
     #
     # Some semantic validation
@@ -245,7 +237,6 @@ if __name__ == "__main__":
                    help='the Clingo executable name')
     p.add_argument('input_file', help="the configuration file")
     args = p.parse_args()
-    print(args)
     conf = loadConfiguration(p, args)
 
     aspFile = open("schedule.asp", "w", encoding = 'utf-8')
