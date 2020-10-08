@@ -1,0 +1,36 @@
+{
+    "penalty_bad_time": 1000,
+    "penalty_ok_time": 100,
+    "penalty_good_time": 0,
+    "penalty_consecutive": 10,
+    "groups": [
+	{"name": "Tue 10-12", "min": 2, "max": 2},
+        {"name": "Tue 12-14", "min": 2, "max": 2, "pred": "Tue 10-12"},
+	{"name": "Tue 14-16", "min": 2, "max": 2, "pred": "Tue 12-14"},
+	{"name": "Tue 16-18", "min": 2, "max": 2, "pred": "Tue 14-16"},
+	{"name": "Wed 10-12", "min": 2, "max": 2},
+	{"name": "Wed 12-14", "min": 2, "max": 2, "pred": "Wed 10-12"},
+	{"name": "Wed 14-16", "min": 3, "max": 3, "pred": "Wed 12-14"},
+	{"name": "Wed 16-18", "min": 2, "max": 2, "pred": "Wed 14-16"},
+	{"name": "Thu 10-12", "min": 2, "max": 2},
+	{"name": "Thu 12-14", "min": 3, "max": 3, "pred": "Thu 10-12"},
+	{"name": "Thu 14-16", "min": 3, "max": 3, "pred": "Thu 12-14"},
+	{"name": "Thu 16-18", "min": 3, "max": 3, "pred": "Thu 14-16"}
+    ],
+    "assistants": {
+	"Emma":    {"prefs": "     222 222", "min": 2, "max": 2},
+        "John B.": {"prefs": " 22122122212", "min": 2, "max": 2},
+        "Toby":    {"prefs": " 122 122 122", "min": 2, "max": 2},
+        "Lisa":    {"prefs": "222121122 12", "min": 2, "max": 2},
+        "Angela":  {"prefs": "22 2222222 2", "min": 2, "max": 2},
+        "Matthew": {"prefs": "222 22   2 2", "min": 2, "max": 2},
+        "Peter":   {"prefs": "    22 22   ", "min": 2, "max": 2},
+        "Sam":     {"prefs": "    222  22 ", "min": 2, "max": 2},
+        "John A.": {"prefs": "    22222222", "min": 2, "max": 2},
+        "Robert":  {"prefs": "  22  22  22", "min": 2, "max": 2},
+        "Edward":  {"prefs": "  22 222   2", "min": 2, "max": 2},
+        "Maria":   {"prefs": "22  222 2 2 ", "min": 2, "max": 2},
+        "Joanna":  {"prefs": " 2  22222222", "min": 2, "max": 2},
+        "Thomas":  {"prefs": " 121112211  ", "min": 2, "max": 2}
+    }
+}

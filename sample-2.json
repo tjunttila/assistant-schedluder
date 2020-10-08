@@ -1,0 +1,38 @@
+{
+    "penalty_bad_time": 1000,
+    "penalty_ok_time": 10,
+    "penalty_good_time": 0,
+    "penalty_consecutive": 5,
+    "groups": [
+	{"name": "ma 14-16", "min": 1, "max": 1},
+        {"name": "ma 16-18", "min": 1, "max": 1, "pred": "ma 14-16"},
+        {"name": "ti 10-12", "min": 1, "max": 1},
+        {"name": "ti 12-14", "min": 1, "max": 1, "pred": "ti 10-12"},
+        {"name": "ti 14-16", "min": 1, "max": 1, "pred": "ti 12-14"},
+        {"name": "ti 16-18", "min": 1, "max": 2, "pred": "ti 14-16"},
+        {"name": "ti 18-20", "min": 1, "max": 1, "pred": "ti 16-18"},
+        {"name": "ke 10-12", "min": 1, "max": 1},
+        {"name": "ke 16-18", "min": 1, "max": 1},
+        {"name": "ke 18-20", "min": 1, "max": 1, "pred": "ke 16-18"},
+        {"name": "to 10-12", "min": 1, "max": 1},
+        {"name": "to 12-14", "min": 1, "max": 1, "pred": "to 10-12"},
+        {"name": "to 14-16", "min": 1, "max": 1, "pred": "to 12-14"},
+        {"name": "to 16-18", "min": 1, "max": 1, "pred": "to 14-16"},
+        {"name": "to 18-20", "min": 1, "max": 1, "pred": "to 16-18"},
+        {"name": "pe 8-10",  "min": 1, "max": 1},
+        {"name": "pe 10-12", "min": 1, "max": 1, "pred": "pe 8-10"},
+        {"name": "pe 14-16", "min": 2, "max": 2}
+    ],
+    "assistants": {
+	"Michael":  {"prefs": "11  12    1111111 ", "min": 1, "max": 1},
+        "John":     {"prefs": "  1 1 2        11 ", "min": 2, "max": 2},
+        "Emilia":   {"prefs": "1 1  1111111 11111", "min": 2, "max": 2},
+        "Emma":     {"prefs": "  1 111  1   111  ", "min": 2, "max": 2},
+        "Jonathan": {"prefs": "11122111111 1  1  ", "min": 2, "max": 2},
+        "Oliver":   {"prefs": " 11 11122111 1111 ", "min": 2, "max": 2},
+        "Otto":     {"prefs": "11 1111 22 1111   ", "min": 2, "max": 2},
+        "Olivia":   {"prefs": "11  122 11  111  1", "min": 2, "max": 2},
+        "Oscar":    {"prefs": "  111111  1221111 ", "min": 2, "max": 2},
+        "Mariah":   {"prefs": "    12      2   1 ", "min": 2, "max": 2}
+    }
+}
