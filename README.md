@@ -27,6 +27,14 @@ Please see the file [sample-1.yaml](sample-1.yaml) file for a commented YAML exa
 and [sample-1.json](sample-1.json) for its JSON counterpart.
 The file [sample-2.json](sample-2.json) contains a more constrained configuration example in which not all the requirements can be fulfilled.
 
+Observe that, in addition to the "push enter and accept the produced result" mode,
+the tool can also be used in a "possibility exploration" mode.
+For instance, if an assistant wants to have all his/her groups within a day,
+then one can modify the configuration file so that his/her groups are
+only allowed on Tuesday, for instance,
+and then run the tool to see whether the rest of the assistants
+can still be scheduled in a satisfactory manner.
+
 # License
 
 The `assistant-scheduler` tool is released under the [MIT License](LICENSE).
